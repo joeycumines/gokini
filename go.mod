@@ -1,21 +1,40 @@
 module github.com/patrobinson/gokini
 
+go 1.24.5
+
 require (
-	github.com/aws/aws-sdk-go v1.19.38
-	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
-	github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927 // indirect
-	github.com/gogo/protobuf v1.1.1 // indirect
-	github.com/golang/protobuf v1.2.0 // indirect
-	github.com/google/uuid v1.0.0
-	github.com/matryer/try v0.0.0-20161228173917-9ac251b645a2
-	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
+	github.com/aws/aws-sdk-go v1.55.7
+	github.com/google/uuid v1.6.0
 	github.com/pkg/errors v0.9.1
-	github.com/prometheus/client_golang v0.9.1
-	github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910 // indirect
-	github.com/prometheus/common v0.0.0-20181116084131-1f2c4f3cd6db
-	github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d // indirect
-	github.com/sirupsen/logrus v1.2.0
-	golang.org/x/net v0.0.0-20181114220301-adae6a3d119a // indirect
-	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f // indirect
-	golang.org/x/text v0.3.0 // indirect
+	github.com/prometheus/client_golang v1.22.0
+	github.com/prometheus/client_model v0.6.2
+	github.com/prometheus/common v0.65.0
+	github.com/sirupsen/logrus v1.9.3
+)
+
+require (
+	github.com/BurntSushi/toml v1.5.0 // indirect
+	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
+	github.com/joeycumines/simple-command-output-filter v0.2.1 // indirect
+	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
+	github.com/prometheus/procfs v0.17.0 // indirect
+	github.com/yuin/goldmark v1.7.12 // indirect
+	golang.org/x/exp/typeparams v0.0.0-20250711185948-6ae5c78190dc // indirect
+	golang.org/x/mod v0.26.0 // indirect
+	golang.org/x/sync v0.16.0 // indirect
+	golang.org/x/sys v0.34.0 // indirect
+	golang.org/x/telemetry v0.0.0-20250710130107-8d8967aff50b // indirect
+	golang.org/x/tools v0.35.0 // indirect
+	golang.org/x/tools/go/expect v0.1.1-deprecated // indirect
+	google.golang.org/protobuf v1.36.6 // indirect
+	honnef.co/go/tools v0.6.1 // indirect
+)
+
+tool (
+	github.com/joeycumines/simple-command-output-filter
+	golang.org/x/tools/cmd/deadcode
+	golang.org/x/tools/cmd/godoc
+	honnef.co/go/tools/cmd/staticcheck
 )

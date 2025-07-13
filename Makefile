@@ -1,15 +1,14 @@
-TIMEOUT  = 30
+.DEFAULT_GOAL := all
+ROOT_MAKEFILE := $(abspath $(lastword $(MAKEFILE_LIST)))
+PROJECT_ROOT := $(patsubst %/,%,$(dir $(ROOT_MAKEFILE)))
 
-get:
-	@go get ./...
+GO_TOOLS ?= $(filter-out $(GO_PKG_BETTERALIGN) $(GO_PKG_GRIT),$(GO_TOOLS_DEFAULT))
+GO_MODULE_SLUGS_NO_BETTERALIGN ?= $(GO_MODULE_SLUGS)
 
-check test tests:
-	@go test -short -timeout $(TIMEOUT)s ./...
+GO_MODULE_SLUGS_USE_DEADCODE = $(GO_MODULE_SLUGS)
+DEADCODE_IGNORE_PATTERNS_FILE = .deadcodeignore
+DEADCODE_ERROR_ON_UNIGNORED = true
+DEADCODE_FLAGS = -test
 
-integration: get
-	@go test -timeout 30s -tags=integration
-	@go test -run TestRebalance -count 25 -tags=integration
-
-docker-integration:
-	@docker-compose run gokini make integration
-	@docker-compose down
+include $(PROJECT_ROOT)/make/go.mk
+include $(PROJECT_ROOT)/make/integration.mk

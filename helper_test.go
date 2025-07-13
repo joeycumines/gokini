@@ -1,9 +1,9 @@
 package gokini
 
 import (
+	"fmt"
 	"os"
 	"time"
-	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
 	awsclient "github.com/aws/aws-sdk-go/aws/client"

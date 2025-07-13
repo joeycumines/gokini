@@ -1,33 +1,16 @@
-version: "3.4"
 services:
-  kinesis:
-    image: dlsniper/kinesalite
+  localstack:
+    image: localstack/localstack:2.2.0
     ports:
-      - 4567:4567
-    expose:
-      - 4567
-  dynamodb:
-    image: amazon/dynamodb-local
-    ports:
-      - 8000:8000
-    expose:
-      - 8000
-  gokini:
-    image: golang:1.10
+      - "4566-4568:4566-4568"
     volumes:
-      - .:/go/src/github.com/patrobinson/gokini
-    working_dir: /go/src/github.com/patrobinson/gokini
-    depends_on:
-      - kinesis
-      - dynamodb
-    links:
-      - kinesis
-      - dynamodb
+      - "./.localstack:/var/lib/localstack"
+      - "./localstack:/docker-entrypoint-initaws.d"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    logging:
+      options:
+        max-size: 1M
+        max-file: "10"
     environment:
-      - KINESIS_ENDPOINT=http://kinesis:4567
-      - DYNAMODB_ENDPOINT=http://dynamodb:8000
-      - AWS_DEFAULT_REGION=ap-nil-1
-      - AWS_REGION=ap-nil-1
-      - AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-      - AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-      - GO111MODULE=on
+      - SERVICES=kinesis,dynamodb
+      - DATA_DIR=/tmp/localstack/data
